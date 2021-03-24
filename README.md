@@ -10,10 +10,13 @@ To run the seq2ripp pipeline on your own data, please visit [hypoNPAtlas](http:/
 
 * The homepage of the server. Navigate to the upload page by clicking the uplaod button in the sidebar.
 <img src="/imgs/sfig7a.png" alt="webserver"  width="500">
+
 * The upload page, where you can upload your genome and fill out your contact email address.
 <img src="/imgs/sfig7b.png" alt="upload genome"  width="500">
+
 * This might take a few seconds to upload and cleaning the file. After it's done, you will see the message at the bottom.
 <img src="/imgs/sfig7c.png" alt="genome uploaded"  width="500">
+
 * After around 30 minutes, you will receive this email in the mailbox of the email address you provided. The 50 digits token is used for the GNPS, which will be explain in the next step. Also, you will receive the link to download the BGC, ORF, core, and the molecules in SMILES format.
 <img src="/imgs/sfig7d.png" alt="email"  width="500">
 
@@ -22,9 +25,12 @@ After validation, users will see a message telling them to check their email for
 
 * Navigate down to the Advanced Analysis Tools section, and click "Browse Tools" In Silico Tools.
 <img src="/imgs/sfig7g.png" alt="Advance tool"  width="500">
+
 * Click the link "here" in the Dereplicator+ at the left bottom.
 <img src="/imgs/sfig7h.png" alt="dereplicator+"  width="500">
+
 * In advanced options, please fill the 50 digit token to the custom DB URL.
 <img src="/imgs/sfig7e.png" alt="db link"  width="500">
+
 * After a few hours, you will receive an email from GNPS, and a link to the result.
 <img src="/imgs/sfig7f.png" alt="GNPS results"  width="500">
