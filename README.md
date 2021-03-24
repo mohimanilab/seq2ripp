@@ -9,28 +9,28 @@ The [hypoNPAtlas](http://metabologenomic.cbd.cs.cmu.edu/AtlasofHypotheticalMolec
 To run the seq2ripp pipeline on your own data, please visit [hypoNPAtlas](http://metabologenomic.cbd.cs.cmu.edu/AtlasofHypotheticalMolecules). From there, navigate to the upload tab using the menu. Seq2ripp requires an input genome and email to run. Upon hitting the run button, the genome will be read to look for any unknown characters or unreadable data. Here is the explanation step by step:
 
 * The homepage of the server. Navigate to the upload page by clicking the uplaod button in the sidebar.
-<img src="/imgs/sfig7a.png" alt="webserver"  width="500">
+<img src="/imgs/sfig7a.png" alt="webserver"  width="700">
 
 * The upload page, where you can upload your genome and fill out your contact email address.
-<img src="/imgs/sfig7b.png" alt="upload genome"  width="500">
+<img src="/imgs/sfig7b.png" alt="upload genome"  width="700">
 
 * This might take a few seconds to upload and cleaning the file. After it's done, you will see the message at the bottom.
-<img src="/imgs/sfig7c.png" alt="genome uploaded"  width="500">
+<img src="/imgs/sfig7c.png" alt="genome uploaded"  width="700">
 
 * After around 30 minutes, you will receive this email in the mailbox of the email address you provided. The 50 digits token is used for the GNPS, which will be explain in the next step. Also, you will receive the link to download the BGC, ORF, core, and the molecules in SMILES format.
-<img src="/imgs/sfig7d.png" alt="email"  width="500">
+<img src="/imgs/sfig7d.png" alt="email"  width="700">
 
 ## How to use GNAS
 After validation, users will see a message telling them to check their email for a message from someone at metabologenomic.cbd.cs.cmu.edu. This email will contain a run ID that will be used as input to Dereplicator+. The processed data contains the hypothetical RiPPs. Dereplicator+ matches molecules to a mass spectra of interest. Users interested in taking their seq2ripp outputted molecules and matching them against mass spectra will upload or choose available mass spectra at [GNPS](https://gnps.ucsd.edu/ProteoSAFe/index.jsp) and type their run ID (from their email) as the custom DB URL parameter. Dereplicator+ will then search for unique and significant metabolite matches and output them to the user.
 
 * Navigate down to the Advanced Analysis Tools section, and click "Browse Tools" In Silico Tools.
-<img src="/imgs/sfig7g.png" alt="Advance tool"  width="500">
+<img src="/imgs/sfig7g.png" alt="Advance tool"  width="700">
 
 * Click the link "here" in the Dereplicator+ at the left bottom.
-<img src="/imgs/sfig7h.png" alt="dereplicator+"  width="500">
+<img src="/imgs/sfig7h.png" alt="dereplicator+"  width="700">
 
 * In advanced options, please fill the 50 digit token to the custom DB URL.
-<img src="/imgs/sfig7e.png" alt="db link"  width="500">
+<img src="/imgs/sfig7e.png" alt="db link"  width="700">
 
 * After a few hours, you will receive an email from GNPS, and a link to the result.
-<img src="/imgs/sfig7f.png" alt="GNPS results"  width="500">
+<img src="/imgs/sfig7f.png" alt="GNPS results"  width="700">
