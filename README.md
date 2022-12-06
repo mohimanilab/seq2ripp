@@ -1,7 +1,7 @@
 # HypoRiPPAtlas Server
 
 ## Introduction
-The [HypoRiPPAtlas](https://hyporippatlas.npanlysis.org) server currently includes hypothetical RiPPs from 17,806 complete RefSeq microbial genomes and 77 plant transcriptomes.
+The [HypoRiPPAtlas](https://hyporippatlas.npanalysis.org) server currently includes hypothetical RiPPs from 17,806 complete RefSeq microbial genomes and 77 plant transcriptomes.
 Users can browse and download hypothetical BGCs, ORFs, cores, and mature RiPP structure data for any of these genomes.
 Additionally, the HypoRiPPAtlas server allows users to upload their own genomic and mass spectrometry data for processing.
 
