@@ -1,54 +1,71 @@
-# HypoNPAtlas server
+# HypoRiPPAtlas Server
+
 ## Introduction
-The [hypoNPAtlas](http://metabologenomic.cbd.cs.cmu.edu/AtlasofHypotheticalMolecules/) webserver currently includes hypothetical RiPPs from 22,671 complete microbial genomes from RefSeq. Users can select specific strains / taxonomic clades and download the corresponding BGC, ORF, core, and molecular structure data. Additionally, the hypoNPAtlas webserver supports the processing of input genomic data from users.  
+The [HypoRiPPAtlas](https://hyporippatlas.npanalysis.org) server currently includes hypothetical RiPPs from 17,806 complete RefSeq microbial genomes and 77 plant transcriptomes.
+Users can browse and download hypothetical BGCs, ORFs, cores, and mature RiPP structure data for any of these genomes.
+Additionally, the HypoRiPPAtlas server allows users to upload their own genomic and mass spectrometry data for processing.
 
-All processed genomes are associated with a unique token string which one can use to search the predicted RiPPs against mass spectral datasets using [Dereplicator+](https://ccms-ucsd.github.io/GNPSDocumentation/dereplicator%2B/) from the [GNPS](https://gnps.ucsd.edu/ProteoSAFe/index.jsp) infrastructure. The use of a token string (rather than downloading and uploading predicted RiPPs) facilitates the interaction between hypoNPAtlas (responsible for genome mining) and the GNPS infrastructure (responsible for mass spectral search). Moreover, a user may request precomputation of the fragmentation graphs of all predicted molecular structures that make Dereplicator+ searches orders of magnitude faster.
+## Running seq2ripp on your own data
+The seq2ripp pipeline requires paired genomic and mass spectrometry data.
+First, you will need to [create a user account](https://hyporippatlas.npanalysis.org/#/signup).
 
+![create a user account](images/signup.png)
 
-## How to use your own data on the hypoNPAtlas server
-To run the seq2ripp pipeline on your own data, please visit [hypoNPAtlas](http://metabologenomic.cbd.cs.cmu.edu/AtlasofHypotheticalMolecules). From there, navigate to the `Process your Genome` tab. Seq2ripp requires an input genome and email to run. Upon hitting the `Run` button, the genome will be read to look for any unknown characters or unreadable data.
+Next, you can navigate to your custom data runs section as show below.
 
-* The homepage of the server. Navigate to the upload page by clicking the `Process your Genome` button in the sidebar.
-<img src="images/step1.png" alt="webserver"  width="700">
+![nav to custom page](images/custom_run_select.png)
 
-* The upload page, where you can upload your genome and provide your contact email address. You may opt in for preprocessing the fragmentation of all identified RiPPs. If not selected, the resulting structures will be available in the SMILES format.
-<img src="images/step2.png" alt="upload genome"  width="700">
+This will bring you to a page with two sections.
+First, there is a table with all of your custom runs up to now, it should begin empty.
+Second, there is a form to create a new custom run.
 
-* This might take a few seconds to upload and clean the file. After it is done, the processing begins. It may take from several minutes to several hours depending on the server load and the size of the provided genome file. If the preprocessing for Dereplicator+ is selected, the overall computation could be much longer.
+![custom page](images/custom_page.png)
 
-* When the processing is finished, you will receive an email from `root@metabologenomic.cbd.cs.cmu.edu` to the provided address. The email will include the link to download the predicted BGCs, ORFs, cores, and the molecules in the SMILES format. The 50-characters token in the link is a unique `hypoNPAtlas ID` which could be used on GNPS as explained in detail below.
-<img src="images/step3.png" alt="email"  width="700">
+To create a new run of seq2ripp
+1. Assign a name to your run
+2. A FASTA of your complete genome
+3. A MGF, mzXML, or mzML of your paired mass spectral data
+4. Press "Submit"
 
-## How to use hypoNPAtlas results on GNPS
-The [GNPS](https://gnps.ucsd.edu/ProteoSAFe/index.jsp) platform allows uploading, sharing, and analyzing natural product mass spectrometry data (MS/MS) using various computational methods. We recommend searching your hypoNPAtlas results against one of the thousands of GNPS publicly available datasets or your own MS/MS data using the [Dereplicator+](https://ccms-ucsd.github.io/GNPSDocumentation/dereplicator%2B/) workflow. Below is a brief step-by-step instruction on using this GNPS workflow with hypoNPAtlas output. You may want to consult with the [Dereplicator+ documentation](https://ccms-ucsd.github.io/GNPSDocumentation/dereplicator%2B/) or [Mohimani et al., 2018](https://doi.org/10.1038/s41467-018-06082-8) to get more details. You may also be interested in trying the new [molDiscovery](https://ccms-ucsd.github.io/GNPSDocumentation/molDiscovery/) method, which has a very similar interface to Dereplicator+ but outperforms it in both efficiency and accuracy.
+![filled form](images/filled_form.png)
 
-* Go to [https://gnps.ucsd.edu/](https://gnps.ucsd.edu/) and log in using an existing account or create a new one.
-<img src="images/step4.png" alt="GNPS login"  width="700">
+After submission you will be redirected to the page for your custom run.
+Do not navigate away from this page while it's loading, it will need to upload your data files to our server.
+After a moment you will be redirected to the page for your custom run.
 
-* From the main page, navigate down to the `Advanced Analysis Tools` section, and click the `Browse Tools` button in the `In Silico Tools` subsection.
-<img src="images/step5.png" alt="Advance tools"  width="700">
+![running task](images/task_running.png)
 
-* Click the link `here` in the Dereplicator+ section at the left bottom. Alternatively, you can use the [direct link](https://gnps.ucsd.edu/ProteoSAFe/index.jsp?params=%7B%22workflow%22:%22DEREPLICATOR_PLUS%22%7D) to the Dereplicator+ workflow. **NB**: you should be logged in to GNPS to properly open the link!
-<img src="images/step6.png" alt="In silico tools"  width="700">
+This page will refresh automatically every few seconds.
+You can feel free to come back to the same URL later, since the custom run URLs are stable.
 
-* In the `Advanced Options` section, insert your 50-characters token from the hypoNPAtlas email into the `Custom DB URL or hypoNPAtlas ID` field. In the Basic Options, you should select at least one MS/MS file as an `Input File`. Please, consult the [Dereplicator+ documentation](https://ccms-ucsd.github.io/GNPSDocumentation/dereplicator%2B/) regarding the rest Basic and Advance options or left them with the default values.
-<img src="images/step7.png" alt="db link"  width="700">
+## Viewing seq2ripp results
+The HypoRiPPAtlas is available at <https://hyporippatlas.npanalysis.org>.
+It is displayed as a table of the genomes that have been incorporated into the atlas.
 
-* The spectra selection window allows uploading of your spectra to the account folder or importing GNPS public datasets.
-<img src="images/step8.png" alt="db link"  width="700">
+![atlas landing](images/atlas_landing.png)
 
-* To choose spectra file(s), select them in the left pane, click on the `Input File` button in the middle pane, and check the correctness of the selection in the right pane.
-<img src="images/step9.png" alt="db link"  width="700">
+Clicking on any row in this table will redirect you to the results for that run.
+Each entry in the HypoRiPPAtlas is assigned a unique UUID which determines the stable URL.
+For example, Mycobacterium avium has an ID of a544d448-5b6b-4728-9615-527d04688a78 and can be found at
+<https://hyporippatlas.npanalysis.org/#/atlas/a544d448-5b6b-4728-9615-527d04688a78>.
 
-* When MS/MS data is selected, fill the rest mandatory fields (`Title` and `Email`) and start the analysis by pressing `Submit`
-<img src="images/step10.png" alt="db link"  width="700">
+![results page](images/result_page.png)
 
-* After a few hours, you will receive an email from GNPS containing the link to the results. The processing time may vary significantly depending on the spectral dataset size and the number of predicted RiPPs. The resulting Dereplicator+ window looks like the following. Click on the `View All MSMs` report to view all significant Metabolite-Spectrum Matches identified in the dataset. Please, consult the [Dereplicator+ documentation](https://ccms-ucsd.github.io/GNPSDocumentation/dereplicator%2B/) regarding the rest types of reports.
-<img src="images/step11.png" alt="GNPS results"  width="700">
+The results consist of four tables: theoretical BGCs, theoretical RiPP ORFs, theoretical RiPP cores, and theoretical RiPPs.
+Results can be downloaded in JSON or CSV format for any of these tables.
+For BGCs, ORFs, and cores results can also be downloaded as a FASTA file.
 
+![download](images/download_results.png)
 
-## HypoNPAtlas implementation and technical details
-The hypoNPAtlas was built using Shiny, an R package developed to simplify the complexities of typical back and front-end web development. Shiny requires two scripts, ui.R and server.R that control the appearance of the app and contain functionality needed to build the app, respectively. HTML, CSS, and Javascript can be added to both scripts to extend R functionality, and snippets of all three languages were used in areas where R lacked methods for a requirement, including loaders, view buttons, and row conditions within data tables. On the back-end, genomic data for BGCs, ORFs, cores, and RiPPs are separated by files. The architecture of hypoNPAtlas requires a one-to-one mapping of genomes to data directories. A directory containing 4 files, one for each type of sequence in the seq2ripp pipeline, maps to a single genome. HypoNPAtlas is hosted on an Ubuntu server at Carnegie Mellon University.
+For custom runs the only difference in the results is that the RiPPs table includes the Dereplicator+ molecule-spectrum matching score between the theoretical RiPP and the best explaining spectrum. This column will be included in JSON and CSV downloads.
 
-## Feedback and bug reports
-If you have any questions regarding hypoNPAtlas/seq2ripp or wish to report a bug, please write to [hoseinm@andrew.cmu.edu](hoseinm@andrew.cmu.edu) or [post a GitHub issue](https://github.com/mohimanilab/seq2ripp/issues).
+## Contributing to the atlas
+By default custom runs are completely private to you.
+If you would like to contribute runs of seq2ripp on your own data to the public atlas you can use the publish button on the completed task page.
+
+![publish](images/publish.png)
+
+After clicking the blue "Publish" button you must provide a public name for your genome and your own name so that you can be credited as a contributor.
+
+## Reporting Errors
+If you run into any error messages or are confused about any aspect of using <https://hyporippatlas.npanalysis.org> please contact mguler@andrew.cmu.edu.
